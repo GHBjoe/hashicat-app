@@ -15,6 +15,13 @@ provider "azurerm" {
   }
 }
 
+module "backupstorage" {
+  source              = "app.terraform.io/training-16JuneBjoe/azure-backup/azurerm"
+  version             = "1.0.2"
+  resource_group_name = "${var.prefix}-private"
+}
+
+
 resource "azurerm_resource_group" "myresourcegroup" {
   name     = "${var.prefix}-workshop"
   location = var.location
